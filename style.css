@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Abu-abu Muda */
+}
+
+header {
+  background-color: #004d26; /* Hijau Tua */
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+nav {
+  background-color: #006633; /* Hijau Tua */
+  overflow: hidden;
+}
+
+nav a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #bfbfbf; /* Abu-abu Muda */
+  color: black;
+}
+
+.container {
+  padding: 20px;
+}
+
+.product {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 10px;
+  text-align: center;
+  width: 200px;
+  float: left;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+.product h3 {
+  margin: 10px 0;
+}
+
+.product button {
+  background-color: #004d26; /* Hijau Tua */
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background-color: #006633; /* Hijau Tua */
+}
+
+footer {
+  clear: both;
+  text-align: center;
+  padding: 1em;
+  background-color: #bfbfbf; /* Abu-abu Muda */
+}
