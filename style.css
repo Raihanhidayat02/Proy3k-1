@@ -6,14 +6,14 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f2f2f2;
-  color: #111;
+  background-color: #FFFDF2;
+  color: #111111;
 }
 
 /* Header */
 header {
-  background-color: #111;
-  color: white;
+  background-color: #000000;
+  color: #FFFDF2;
   padding: 1.5rem;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@ header {
   height: auto;
   object-fit: cover;
   display: block;
-  filter: brightness(0.85);
+  filter: brightness(0.75);
 }
 
 .banner-text {
@@ -39,7 +39,7 @@ header {
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
+  color: #FFFDF2;
   text-align: center;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
@@ -55,7 +55,7 @@ header {
 
 /* Navigasi */
 nav {
-  background-color: #333;
+  background-color: #000000;
   padding: 0.8rem 1rem;
   position: relative;
 }
@@ -63,7 +63,7 @@ nav {
 .menu-toggle {
   display: none;
   font-size: 1.8rem;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -74,28 +74,29 @@ nav {
 }
 
 .nav-links a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   padding: 10px 16px;
   transition: background-color 0.3s;
 }
 
 .nav-links a:hover {
-  background-color: #ccc;
-  color: #000;
+  background-color: #f2f2f2;
+  color: #000000;
   border-radius: 5px;
 }
 
 /* Container utama */
 .container {
   padding: 40px 5%;
+  background-color: #FFFDF2;
 }
 
 .container h2 {
   text-align: center;
   margin-bottom: 30px;
   font-size: 2rem;
-  color: #111;
+  color: #111111;
 }
 
 /* Produk Grid */
@@ -106,9 +107,10 @@ nav {
 }
 
 .product {
-  background-color: #fff;
+  background-color: #2e2e2e;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   padding: 20px;
   text-align: center;
   transition: transform 0.2s ease;
@@ -128,18 +130,18 @@ nav {
 .product h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: #111;
+  color: #FFFDF2;
 }
 
 .product p {
   font-size: 1rem;
-  color: #444;
+  color: #FFFDF2;
   margin-bottom: 15px;
 }
 
 .product button {
-  background-color: #111;
-  color: white;
+  background-color: #FFFDF2;
+  color: #333333;
   border: none;
   padding: 10px 16px;
   border-radius: 5px;
@@ -148,15 +150,16 @@ nav {
 }
 
 .product button:hover {
-  background-color: #555;
+  background-color: #444444;
 }
 
 /* Footer */
 footer {
-  background-color: #ccc;
+  background-color: #2e2e2e;
   padding: 20px;
   text-align: center;
   font-size: 0.9rem;
+  color: #FFFDF2;
   margin-top: 40px;
 }
 
@@ -169,7 +172,7 @@ footer {
   .nav-links {
     display: none;
     flex-direction: column;
-    background-color: #333;
+    background-color: #000000;
     margin-top: 10px;
   }
 
@@ -179,16 +182,17 @@ footer {
 
   .nav-links a {
     padding: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
+/* Toast */
 .toast {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: #111;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   padding: 12px 20px;
   border-radius: 6px;
   opacity: 0;
@@ -202,9 +206,10 @@ footer {
   transform: translateY(0);
 }
 
+/* Keranjang */
 #keranjang {
   margin-top: 50px;
-  background-color: #fff;
+  background-color: #FFFDF2;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -213,15 +218,15 @@ footer {
 .cart-item {
   display: flex;
   justify-content: space-between;
-  background-color: #e0e0e0;
+  background-color: #f2f2f2;
   padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 6px;
 }
 
 .cart-item button {
-  background-color: #000;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   border: none;
   padding: 6px 10px;
   border-radius: 4px;
@@ -230,7 +235,7 @@ footer {
 }
 
 .cart-item button:hover {
-  background-color: #555;
+  background-color: #333333;
 }
 
 #total {
@@ -238,5 +243,5 @@ footer {
   margin-top: 20px;
   text-align: right;
   font-size: 1.2rem;
-  color: #000;
+  color: #000000;
 }
