@@ -13,13 +13,26 @@
 <nav>
     <div class="menu-toggle" id="menu-toggle">&#9776;</div>
     <div class="nav-links" id="nav-links">
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
       <a href="beranda.html">Beranda</a>
-      <a href="koleksi.html">Katalog</a>
-      <a href="kontak">Kontak</a>
-      <a href="keranjang.html">Keranjang (<span id="cart-count">0</span>)</a>
-      <a href="menu.html">Menu
+      <a href="keranjang.html">Keranjang</a>
+      <a href="koleksi.html">Produk</a>
     </div>
 </nav>
 
+   <!-- Footer -->
+  <footer>
+    <p>Puller__ © 2025</p>
+   <a href="https://instagram.com/puller__" >Instagram</a>
+  </footer>
+
+  <!-- Optional: Script untuk menu responsif -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
