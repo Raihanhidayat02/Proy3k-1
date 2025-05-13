@@ -1,75 +1,207 @@
-body {
-  font-family: Arial, sans-serif;
+/* Reset dasar */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0; /* Abu-abu Muda */
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* Header */
 header {
-  background-color: #004d26; /* Hijau Tua */
+  background-color: #004d26;
   color: white;
-  padding: 1em;
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Navigasi */
 nav {
-  background-color: #006633; /* Hijau Tua */
-  overflow: hidden;
+  background-color: #006633;
+  padding: 0.8rem 1rem;
+  position: relative;
 }
 
-nav a {
-  float: left;
-  display: block;
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
   color: white;
-  text-align: center;
-  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
   text-decoration: none;
+  padding: 10px 16px;
+  transition: background-color 0.3s;
 }
 
-nav a:hover {
-  background-color: #bfbfbf; /* Abu-abu Muda */
-  color: black;
+.nav-links a:hover {
+  background-color: #bfbfbf;
+  color: #000;
+  border-radius: 5px;
 }
 
+/* Container utama */
 .container {
-  padding: 20px;
+  padding: 40px 5%;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #004d26;
+}
+
+/* Produk Grid */
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 
 .product {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 16px;
-  margin: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
   text-align: center;
-  width: 200px;
-  float: left;
+  transition: transform 0.2s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
 }
 
 .product img {
   width: 100%;
   height: auto;
+  border-radius: 6px;
+  margin-bottom: 15px;
 }
 
 .product h3 {
-  margin: 10px 0;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #006633;
+}
+
+.product p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 15px;
 }
 
 .product button {
-  background-color: #004d26; /* Hijau Tua */
+  background-color: #004d26;
   color: white;
-  padding: 10px;
   border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .product button:hover {
-  background-color: #006633; /* Hijau Tua */
+  background-color: #00804d;
 }
 
+/* Footer */
 footer {
-  clear: both;
+  background-color: #bfbfbf;
+  padding: 20px;
   text-align: center;
-  padding: 1em;
-  background-color: #bfbfbf; /* Abu-abu Muda */
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #006633;
+    margin-top: 10px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+}
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #004d26;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#keranjang {
+  margin-top: 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.cart-item button {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.cart-item button:hover {
+  background-color: #a30000;
+}
+
+#total {
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: right;
+  font-size: 1.2rem;
+  color: #004d26;
 }
