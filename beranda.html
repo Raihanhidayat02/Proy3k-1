@@ -24,35 +24,45 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
- <section class="hero-banner">
-  <img src="pull.webp" alt="Banner Puller" class="banner-image" />
-  <div class="banner-text">
-    <h2>New drops just landed</h2>
-    <p>Minimal movies, maximal style — Only at Puller</p>
-  </div>
-</section>
+   <!-- Hero Section -->
+   <section class="hero-banner">
+    <div class="slider">
+      <div class="slide active">
+        <img src="pull.webp" alt="Banner Puller 1" class="banner-image" />
+      </div>
+      <div class="slide">
+        <img src="banner1.jpg" alt="Banner 2" class="banner-image" />
+      </div>
+      <div class="slide">
+        <img src="banner2.jpg" alt="Banner 3" class="banner-image" />
+      </div>
+      <button class="slider-btn prev-btn" onclick="moveSlide(-1)">❮</button>
+      <button class="slider-btn next-btn" onclick="moveSlide(1)">❯</button>
+    </div>
+    <div class="banner-text">
+    </div>
+  </section>
 
   <!-- Produk Unggulan -->
   <section class="container">
     <h2>Produk Unggulan</h2>
     <div class="products-wrapper">
       <div class="product">
-        <img src="https://via.placeholder.com/250" alt="Produk 1" />
-        <h3>Kerajinan Anyaman</h3>
-        <p>Rp50.000</p>
+        <img src="jakethitam.jpg" alt="Produk 1" />
+        <h3>Puller Halfzip Sweatshirt "Shade Molten"</h3>
+        <p>Rp300.000</p>
         <button>Tambah ke Keranjang</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/250" alt="Produk 2" />
-        <h3>Kopi Lokal 250gr</h3>
-        <p>Rp35.000</p>
+        <img src="terjun.jpg" alt="Produk 2" />
+        <h3>Puller T-Shirt "Happiness"</h3>
+        <p>Rp170.000</p>
         <button>Tambah ke Keranjang</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/250" alt="Produk 3" />
-        <h3>Kue Tradisional</h3>
-        <p>Rp20.000</p>
+        <img src="Garis.jpg" alt="Produk 3" />
+        <h3>Puller T-Shirt "Doughty"</h3>
+        <p>Rp170.000</p>
         <button>Tambah ke Keranjang</button>
       </div>
     </div>
@@ -77,16 +87,137 @@
 
   <!-- Footer -->
   <footer>
-    <p>Puller__ © 2025</p>
-   <a href="https://instagram.com/puller__" >Instagram</a>
-  </footer>
 
-  <!-- Optional: Script untuk menu responsif -->
-  <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('show');
-    }
-  </script>
+    <script>
+      let slideIndex = 0;
+      
+      function showSlides() {
+        let slides = document.getElementsByClassName("slide");
+        
+        // Sembunyikan semua slide
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+        
+        // Naikkan indeks slide
+        slideIndex++;
+        
+        // Kembali ke slide pertama jika sudah sampai akhir
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        
+        // Tampilkan slide saat ini
+        slides[slideIndex - 1].classList.add("active");
+        
+        // Ganti slide setiap 5 detik
+        setTimeout(showSlides, 5000);
+      }
+      
+      function moveSlide(n) {
+        let slides = document.getElementsByClassName("slide");
+        slideIndex += n;
+        
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        if (slideIndex < 1) {
+          slideIndex = slides.length;
+        }
+        
+        // Sembunyikan semua slide
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].classList.remove("active");
+        }
+        
+        // Tampilkan slide yang dipilih
+        slides[slideIndex - 1].classList.add("active");
+      }
+      
+      // Mulai slideshow saat halaman dimuat
+      document.addEventListener('DOMContentLoaded', function() {
+        showSlides();
+      });
+    </script>
+  <div class="footer-branding">
+    <h2>Windsurf</h2>
+    <p>Built to keep you in flow state.</p>
+    <div class="social-icons">
+      <a href="#"><img src="icon-email.svg" alt="Email"></a>
+      <a href="https://instagram.com/puller__"><img src="ig.png" alt="Instagram"></a>
+      <a href="#"><img src="icon-tiktok.svg" alt="TikTok"></a>
+      <a href="#"><img src="icon-x.svg" alt="X"></a>
+      <a href="#"><img src="icon-discord.svg" alt="Discord"></a>
+      <a href="#"><img src="icon-linkedin.svg" alt="LinkedIn"></a>
+      <a href="#"><img src="icon-reddit.svg" alt="Reddit"></a>
+      <a href="#"><img src="icon-youtube.svg" alt="YouTube"></a>
+    </div>
+  </div>
+
+  <div class="footer-links-wrapper">
+    <div class="footer-column">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#">Windsurf Editor</a></li>
+        <li><a href="#">Windsurf Plugins</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Windsurf for Enterprise</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Capabilities</h4>
+      <ul>
+        <li><a href="#">Cascade</a></li>
+        <li><a href="#">Tab</a></li>
+        <li><a href="#">Chat</a></li>
+        <li><a href="#">Command</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Compare</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Partnerships</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Security</a></li>
+        <li><a href="#">Windsurf for Government</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Docs</a></li>
+        <li><a href="#">Changelog</a></li>
+        <li><a href="#">Releases</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Support</a></li>
+        <li><a href="#">Brand</a></li>
+        <li><a href="#">Referrals</a></li>
+        <li><a href="#">Feature Requests</a></li>
+        <li><a href="#">Windsurf Directory</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Hackathons</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Students</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
