@@ -2,39 +2,97 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Beranda - Puller</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Puller</h1>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="green">Puller</span><span class="dark"></span>
+    </div>
+
+    <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+        <a href="beranda.html">Beranda</a>
+        <a href="koleksi.html">Produk</a>
+        <a href="Tentang.html">About</a>
+        <a href="keranjang.html">Keranjang</a>
+      </div>
+    </nav>
   </header>
 
-<nav>
-    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-    <div class="nav-links" id="nav-links">
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="navLinks">
-      <a href="beranda.html">Beranda</a>
-      <a href="keranjang.html">Keranjang</a>
-      <a href="koleksi.html">Produk</a>
-      <a href="Tentang.html">About</a>
-    </div>
-</nav>
+  <section id="keranjang" class="container">
+    <h2>Keranjang Anda</h2>
+    <div id="cart-items"></div>
+    <p id="total">Total: Rp0</p>
+  </section>
 
-<section id="keranjang" class="container">
-  <h2>Keranjang Anda</h2>
-  <div id="cart-items"></div>
-  <p id="total">Total: Rp0</p>
-</section>
+  <script>
+    // Muat keranjang dari localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
- <!-- Footer -->
+    // Fungsi untuk menghitung total harga
+    function calculateTotal() {
+      return cart.reduce((total, item) => {
+        const price = parseFloat(item.price.replace('Rp', '').replace(',', ''));
+        return total + (price * item.quantity);
+      }, 0);
+    }
+
+    // Fungsi untuk menampilkan keranjang
+    function displayCart() {
+      const cartItems = document.getElementById('cart-items');
+      const totalElement = document.getElementById('total');
+      
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p>Keranjang Anda kosong</p>';
+        totalElement.textContent = 'Total: Rp0';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+          <div class="cart-item-details">
+            <h3>${item.name}</h3>
+            <p>Harga: ${item.price}</p>
+            <p>Jumlah: ${item.quantity}</p>
+          </div>
+          <button onclick="removeFromCart('${item.name}')">Hapus</button>
+        </div>
+      `).join('');
+
+      const total = calculateTotal();
+      totalElement.textContent = `Total: Rp${total.toLocaleString()}`;
+    }
+
+    // Fungsi untuk menghapus item dari keranjang
+    function removeFromCart(name) {
+      cart = cart.filter(item => item.name !== name);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    // Tampilkan keranjang saat halaman dimuat
+    displayCart();
+
+    // Event listener untuk tombol hapus
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('remove-item')) {
+        const productName = e.target.dataset.product;
+        removeFromCart(productName);
+      }
+    });
+  </script>
+
+  <!-- Footer -->
   <footer>
-    <p>Puller__ © 2025</p>
-   <a href="https://instagram.com/puller__" >Instagram</a>
+   <p>Puller__ &copy; 2025</p>
+   <a href="https://instagram.com/puller__">Instagram</a>
   </footer>
 
   <!-- Optional: Script untuk menu responsif -->

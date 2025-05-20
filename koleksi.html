@@ -2,53 +2,54 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Beranda - Puller</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>Puller</h1>
-  </header>
-
-  <!-- Navigasi -->
-  <nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <div class="nav-links" id="navLinks">
-      <a href="beranda.html">Beranda</a>
-      <a href="keranjang.html">Keranjang</a>
-      <a href="koleksi.html">Produk</a>
-      <a href="Tentang.html">About</a>
+   <!-- Navbar -->
+   <header class="navbar">
+    <div class="logo">
+      <span class="green">Puller</span><span class="dark"></span>
     </div>
-  </nav>
+
+    <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <div class="nav-links" id="navLinks">
+        <a href="beranda.html">Beranda</a>
+        <a href="koleksi.html">Produk</a>
+        <a href="Tentang.html">About</a>
+        <a href="keranjang.html">Keranjang</a>
+      </div>
+    </nav>
+  </header>
 
   <!-- Konten Produk -->
   <main class="container" id="produk">
     <h2 style="text-align: center;">Produk Kami</h2>
     <div class="produk-container">
-      <div class="product">
-        <img src="Lunar Rise.jpg" alt="Rustic Charm">
-        <h3>Rustic Charm</h3>
-        <p>Rp95.000</p>
-        <button>Tambah ke Keranjang</button>
+      <div class="product product-koleksi">
+        <img src="Lunar Rise.jpg" alt="Rustic Charm" class="product-image">
+        <h3 class="product-title">Rustic Charm</h3>
+        <p class="product-price">Rp95.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
       </div>
-      <div class="product">
-        <img src="Rustic Charm.jpg" alt="Rustic Charm">
-        <h3>Rustic Charm</h3>
-        <p>Rp95.000</p>
-        <button>Tambah ke Keranjang</button>
+      <div class="product product-koleksi">
+        <img src="Rustic Charm.jpg" alt="Rustic Charm" class="product-image">
+        <h3 class="product-title">Rustic Charm</h3>
+        <p class="product-price">Rp95.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
       </div>
-      <div class="product">
-        <img src="topi1.jpg" alt="Rustic Charm">
-        <h3>Rustic Charm</h3>
-        <p>Rp95.000</p>
-        <button>Tambah ke Keranjang</button>
+      <div class="product product-koleksi">
+        <img src="topi1.jpg" alt="Rustic Charm" class="product-image">
+        <h3 class="product-title">Rustic Charm</h3>
+        <p class="product-price">Rp95.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
       </div>
-      <div class="product">
-        <img src="topi2.jpg" alt="Lunar Rise">
-        <h3>Lunar Rise</h3>
+      <div class="product product-koleksi">
+        <img src="topi2.jpg" alt="Lunar Rise" class="product-image">
+        <h3 class="product-title">Lunar Rise</h3>
         <p>Rp95.000</p>
         <button>Tambah ke Keranjang</button>
       </div>
@@ -66,8 +67,8 @@
 
  <!-- Footer -->
   <footer>
-    <p>Puller__ © 2025</p>
-   <a href="https://instagram.com/puller__" >Instagram</a>
+   <p>Puller__ &copy; 2025</p>
+   <a href="https://instagram.com/puller__">Instagram</a>
   </footer>
 
   <!-- Optional: Script untuk menu responsif -->
