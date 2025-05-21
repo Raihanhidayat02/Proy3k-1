@@ -28,7 +28,32 @@
   <!-- Konten Produk -->
   <main class="container" id="produk">
     <h2 style="text-align: center;">Produk Kami</h2>
+
     <div class="produk-container">
+      <div class="product">
+        <img src="Puller_Halfzip.jpg" alt="Produk 1" />
+        <h3>Puller Halfzip Sweatshirt "Shade Molten"</h3>
+        <p>Rp300.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
+      <div class="product">
+        <img src="terjun.jpg" alt="Produk 2" />
+        <h3>Puller T-Shirt "Happiness"</h3>
+        <p>Rp170.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
+      <div class="product">
+        <img src="Garis.jpg" alt="Produk 3" />
+        <h3>Puller T-Shirt "Doughty"</h3>
+        <p>Rp170.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
+      <div class="product">
+        <img src="Garis.jpg" alt="Produk 3" />
+        <h3>Puller T-Shirt "Doughty"</h3>
+        <p>Rp170.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
       <div class="product product-koleksi">
         <img src="Lunar Rise.jpg" alt="Rustic Charm" class="product-image">
         <h3 class="product-title">Rustic Charm</h3>
@@ -42,16 +67,16 @@
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
       <div class="product product-koleksi">
-        <img src="topi1.jpg" alt="Rustic Charm" class="product-image">
+        <img src="Lunar Rise.jpg" alt="Rustic Charm" class="product-image">
         <h3 class="product-title">Rustic Charm</h3>
         <p class="product-price">Rp95.000</p>
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
       <div class="product product-koleksi">
-        <img src="topi2.jpg" alt="Lunar Rise" class="product-image">
+        <img src="Lunar Rise.jpg" alt="Lunar Rise" class="product-image">
         <h3 class="product-title">Lunar Rise</h3>
-        <p>Rp95.000</p>
-        <button>Tambah ke Keranjang</button>
+        <p class="product-price">Rp95.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
       </div>
       <!-- Tambahkan produk lainnya di sini -->
     </div>
@@ -78,6 +103,59 @@
       navLinks.classList.toggle('show');
     }
   </script>
+
+  <!-- Add to Cart Functionality -->
+  <script>
+    // Initialize cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    // Function to add product to cart
+    function addToCart(product) {
+      // Check if product is already in cart
+      const existingProduct = cart.find(item => item.name === product.name);
+      
+      if (existingProduct) {
+        // If product exists, increase quantity
+        existingProduct.quantity += 1;
+      } else {
+        // If product doesn't exist, add new item
+        cart.push({
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          quantity: 1
+        });
+      }
+
+      // Save cart to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Show success message
+      alert('Produk berhasil ditambahkan ke keranjang!');
+      
+      // Update cart count in navbar
+      updateCartCount();
+    }
+
+    // Function to update cart count in navbar
+    function updateCartCount() {
+      const cartCount = document.getElementById('cart-count');
+      if (cartCount) {
+        cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+      }
+    }
+
+    // Add event listeners to all add to cart buttons
+    document.querySelectorAll('.product-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const product = {
+          name: this.parentElement.querySelector('h3').textContent,
+          price: this.parentElement.querySelector('p').textContent,
+          image: this.parentElement.querySelector('img').src
+        };
+        addToCart(product);
+      });
+    });
+  </script>
 </body>
 </html>
-

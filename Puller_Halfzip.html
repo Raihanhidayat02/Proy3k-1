@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Puller Halfzip - Puller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="green">Puller</span>
+        </div>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <div class="nav-links" id="navLinks">
+                <a href="beranda.html">Beranda</a>
+                <a href="koleksi.html">Produk</a>
+                <a href="Tentang.html">About</a>
+                <a href="keranjang.html">Keranjang</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="product-image">
+            <img src="Puller_Halfzip.jpg" alt="Puller Halfzip">
+        </div>
+        <div class="product-details">
+            <h2>Puller Halfzip Sweatshirt "Shade Molten"</h2>
+            <div class="price">
+                <span class="current-price">Rp300.000</span>
+                <span class="old-price">Rp400.000</span>
+            </div>
+
+            <div class="sizes">
+                <p>UKURAN:</p>
+                <div class="size-options">
+                    <button>S</button>
+                    <button>M</button>
+                    <button>L</button>
+                    <button>XL</button>
+                </div>
+            </div>
+
+            <div class="quantity">
+                <p>Quantity:</p>
+                <button>-</button>
+                <input type="text" value="1" readonly />
+                <button>+</button>
+                <p class="stock">1 piece in stock.</p>
+            </div>
+
+            <button class="add-to-cart">ADD TO CART</button>
+            <button class="buy-now">BELI SEKARANG</button>
+
+            <div class="description">
+                <p>Halfzip Sweatshirt terbuat dari bahan HEAVY WEIGHT FLEECE COTTON 100%.</p>
+                <p>Detail Puller Bordir</p>
+                <p>Cocok banget buat sweater Halfzip santai atau streetwear favoritmu!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!menuToggle.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Quantity control
+        const quantityButtons = document.querySelectorAll('.quantity button');
+        const quantityInput = document.querySelector('.quantity input');
+
+        quantityButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const value = parseInt(quantityInput.value);
+                if (button.textContent === '+') {
+                    quantityInput.value = value + 1;
+                } else if (button.textContent === '-' && value > 1) {
+                    quantityInput.value = value - 1;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -351,67 +351,236 @@ nav {
   border-radius: 5px;
 }
 
-/* Container utama */
+/* Container */
 .container {
   padding: 40px 5%;
   background-color: #FFFDF2;
 }
 
-.container h2 {
+/* Section headings */
+section h2 {
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2rem;
-  color: #111111;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-/* Produk Grid */
+/* Products Grid */
 .products-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 20px 0;
-}
-
-.produk-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-  justify-items: center;
-  padding: 0 15px;
+  gap: 30px;
+  padding: 20px;
+  width: 100%;
 }
 
 .product {
-  background-color: white;
-  border-radius: 8px;
+  background: white;
+  border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  aspect-ratio: 1;
   max-width: 250px;
   margin: 0 auto;
 }
 
 .product:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .product img {
   width: 100%;
-  height: auto;
-  max-height: 300px;
+  height: 100%;
   object-fit: contain;
-  border-radius: 4px;
-  margin-bottom: 12px;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 .product h3 {
-  margin: 10px 0;
   font-size: 1.1rem;
+  margin-bottom: 10px;
   color: #333;
-  text-align: center;
 }
 
 .product p {
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-button {
+  background-color: #00b050;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-button:hover {
+  background-color: #008040;
+}
+
+/* Product Detail Page */
+.product-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  gap: 40px;
+}
+
+.product-image {
+  width: 500px;
+  aspect-ratio: 1;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 1px solid #ccc;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.product-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+.price {
+  margin: 15px 0;
+}
+
+.current-price {
+  color: #00b050;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.old-price {
+  color: #666;
+  text-decoration: line-through;
+}
+
+.sizes p,
+.quantity p {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.size-options button {
+  margin-right: 5px;
+  padding: 8px 12px;
+  border: 1px solid #00b050;
+  background: white;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.size-options button:hover {
+  background: #00b050;
+  color: white;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.quantity button {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border: 1px solid #00b050;
+  background: white;
+  cursor: pointer;
+  color: #333;
+}
+
+.quantity button:hover {
+  background: #00b050;
+  color: white;
+}
+
+.quantity input {
+  width: 40px;
+  text-align: center;
+  margin: 5px 0;
+  border: 1px solid #00b050;
+  background: white;
+}
+
+.stock {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+
+.add-to-cart,
+.buy-now {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart {
+  background: white;
+  border: 2px solid #00b050;
+  color: #333;
+}
+
+.add-to-cart:hover {
+  background: #00b050;
+  color: white;
+}
+
+.buy-now {
+  background: #00b050;
+  color: white;
+}
+
+.buy-now:hover {
+  background: #008040;
+}
+
+.description {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Cart Section */
+#keranjang {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#keranjang h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
   color: #666;
   margin: 6px 0;
   font-size: 1rem;
