@@ -84,6 +84,48 @@ header {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Mobile Navigation */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #FFFDF2;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #000000;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-links a {
+    color: #FFFDF2;
+    padding: 10px 0;
+    display: block;
+    text-align: center;
+  }
+}
+
 /* Newsletter Section */
 .newsletter {
   text-align: center;
