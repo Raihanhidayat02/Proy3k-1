@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Beranda - Puller</title>
+  <title>Keranjang - Puller</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -26,7 +26,7 @@
   </header>
 
   <section id="keranjang" class="container">
-    <h2>Keranjang Anda</h2>
+    <h2 style="text-align:center;">Keranjang Anda</h2>
     <div id="cart-items"></div>
     <p id="total">Total: Rp0</p>
   </section>
@@ -38,7 +38,8 @@
     // Fungsi untuk menghitung total harga
     function calculateTotal() {
       return cart.reduce((total, item) => {
-        const price = parseFloat(item.price.replace('Rp', '').replace(',', ''));
+        // Hilangkan karakter selain angka
+        const price = parseInt(item.price.replace(/[^\d]/g, ''));
         return total + (price * item.quantity);
       }, 0);
     }
@@ -47,46 +48,46 @@
     function displayCart() {
       const cartItems = document.getElementById('cart-items');
       const totalElement = document.getElementById('total');
-      
+
       if (cart.length === 0) {
         cartItems.innerHTML = '<p>Keranjang Anda kosong</p>';
         totalElement.textContent = 'Total: Rp0';
         return;
       }
 
-      cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-          <div class="cart-item-details">
-            <h3>${item.name}</h3>
-            <p>Harga: ${item.price}</p>
-            <p>Jumlah: ${item.quantity}</p>
+      cartItems.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item" style="display:flex;align-items:center;gap:16px;margin-bottom:18px;background:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width:70px;height:70px;object-fit:cover;border-radius:6px;">
+          <div class="cart-item-details" style="flex:1;">
+            <h3 style="margin:0 0 4px 0;font-size:1.1rem;">${item.name}</h3>
+            <p style="margin:0 0 2px 0;">Harga: ${item.price}</p>
+            <p style="margin:0;">Jumlah: ${item.quantity}</p>
           </div>
-          <button onclick="removeFromCart('${item.name}')">Hapus</button>
+          <button class="remove-item" data-idx="${idx}" style="background:#e74c3c;color:#fff;border:none;padding:7px 14px;border-radius:5px;cursor:pointer;">Hapus</button>
         </div>
       `).join('');
 
       const total = calculateTotal();
-      totalElement.textContent = `Total: Rp${total.toLocaleString()}`;
+      totalElement.textContent = `Total: Rp${total.toLocaleString('id-ID')}`;
     }
 
-    // Fungsi untuk menghapus item dari keranjang
-    function removeFromCart(name) {
-      cart = cart.filter(item => item.name !== name);
+    // Fungsi untuk menghapus item dari keranjang berdasarkan index
+    function removeFromCartByIdx(idx) {
+      cart.splice(idx, 1);
       localStorage.setItem('cart', JSON.stringify(cart));
       displayCart();
     }
 
-    // Tampilkan keranjang saat halaman dimuat
-    displayCart();
-
-    // Event listener untuk tombol hapus
-    document.addEventListener('click', function(e) {
+    // Event listener untuk tombol hapus (delegasi event)
+    document.getElementById('cart-items').addEventListener('click', function(e) {
       if (e.target.classList.contains('remove-item')) {
-        const productName = e.target.dataset.product;
-        removeFromCart(productName);
+        const idx = parseInt(e.target.getAttribute('data-idx'));
+        removeFromCartByIdx(idx);
       }
     });
+
+    // Tampilkan keranjang saat halaman dimuat
+    displayCart();
   </script>
 
   <!-- Footer -->

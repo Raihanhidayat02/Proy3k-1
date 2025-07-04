@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Beranda - Puller</title>
+  <title>Koleksi Produk - Puller</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-   <!-- Navbar -->
-   <header class="navbar">
+  <!-- Navbar -->
+  <header class="navbar">
     <div class="logo">
       <span class="green">Puller</span><span class="dark"></span>
     </div>
-
     <nav>
       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
       <div class="nav-links" id="navLinks">
@@ -28,97 +26,77 @@
   <!-- Konten Produk -->
   <main class="container" id="produk">
     <h2 style="text-align: center;">Produk Kami</h2>
-
     <div class="produk-container">
+      <!-- Produk 1 -->
       <div class="product">
-        <img src="Puller_Halfzip.jpg" alt="Produk 1" />
+        <img src="Picture/Puller_Halfzip.jpg" alt="Puller Halfzip Sweatshirt 'Shade Molten'" />
         <h3>Puller Halfzip Sweatshirt "Shade Molten"</h3>
         <p>Rp300.000</p>
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
+      <!-- Produk 2 -->
       <div class="product">
-        <img src="terjun.jpg" alt="Produk 2" />
+        <img src="Picture/Parachute.jpg" alt="Puller T-Shirt 'Happiness'" />
+        <h3>Puller T-Shirt "Parachute"</h3>
+        <p>Rp170.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
+      <!-- Produk 3 -->
+      <div class="product">
+        <img src="Picture/Doughty.jpg" alt="Puller T-Shirt 'Doughty'" />
+        <h3>Puller T-Shirt "Doughty"</h3>
+        <p>Rp170.000</p>
+        <button class="product-button">Tambah ke Keranjang</button>
+      </div>
+       <!-- Produk 4 -->
+      <div class="product">
+        <img src="Picture/Happiness.png" alt="Puller T-Shirt 'Doughty'" />
         <h3>Puller T-Shirt "Happiness"</h3>
         <p>Rp170.000</p>
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
+      <!-- Produk 4 (duplikat, bisa dihapus jika tidak perlu) -->
+      <!--
       <div class="product">
-        <img src="Garis.jpg" alt="Produk 3" />
+        <img src="Garis.jpg" alt="Puller T-Shirt 'Doughty'" />
         <h3>Puller T-Shirt "Doughty"</h3>
         <p>Rp170.000</p>
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
-      <div class="product">
-        <img src="Garis.jpg" alt="Produk 3" />
-        <h3>Puller T-Shirt "Doughty"</h3>
-        <p>Rp170.000</p>
-        <button class="product-button">Tambah ke Keranjang</button>
-      </div>
+      -->
+    <!-- Produk 5 -->
       <div class="product product-koleksi">
-        <img src="Lunar Rise.jpg" alt="Rustic Charm" class="product-image">
-        <h3 class="product-title">Rustic Charm</h3>
-        <p class="product-price">Rp95.000</p>
-        <button class="product-button">Tambah ke Keranjang</button>
-      </div>
-      <div class="product product-koleksi">
-        <img src="Rustic Charm.jpg" alt="Rustic Charm" class="product-image">
-        <h3 class="product-title">Rustic Charm</h3>
-        <p class="product-price">Rp95.000</p>
-        <button class="product-button">Tambah ke Keranjang</button>
-      </div>
-      <div class="product product-koleksi">
-        <img src="Lunar Rise.jpg" alt="Rustic Charm" class="product-image">
-        <h3 class="product-title">Rustic Charm</h3>
-        <p class="product-price">Rp95.000</p>
-        <button class="product-button">Tambah ke Keranjang</button>
-      </div>
-      <div class="product product-koleksi">
-        <img src="Lunar Rise.jpg" alt="Lunar Rise" class="product-image">
-        <h3 class="product-title">Lunar Rise</h3>
+        <img src="Picture/Eterna Royale.png" alt="Eterna Royale" class="product-image">
+        <h3 class="product-title">Puller T-Shirt " Eterna Royale"</h3>
         <p class="product-price">Rp95.000</p>
         <button class="product-button">Tambah ke Keranjang</button>
       </div>
       <!-- Tambahkan produk lainnya di sini -->
     </div>
-    </main>
+  </main>
 
-  <!-- Opsional: Script untuk menu responsif -->
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('navLinks');
-      nav.classList.toggle('show');
-    }
-  </script>
-
- <!-- Footer -->
+  <!-- Footer -->
   <footer>
-   <p>Puller__ &copy; 2025</p>
-   <a href="https://instagram.com/puller__">Instagram</a>
+    <p>Puller__ &copy; 2025</p>
+    <a href="https://instagram.com/puller__">Instagram</a>
   </footer>
 
-  <!-- Optional: Script untuk menu responsif -->
+  <!-- Script untuk menu responsif dan keranjang -->
   <script>
     function toggleMenu() {
       const navLinks = document.getElementById('navLinks');
       navLinks.classList.toggle('show');
     }
-  </script>
 
-  <!-- Add to Cart Functionality -->
-  <script>
     // Initialize cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     // Function to add product to cart
     function addToCart(product) {
-      // Check if product is already in cart
       const existingProduct = cart.find(item => item.name === product.name);
-      
       if (existingProduct) {
-        // If product exists, increase quantity
         existingProduct.quantity += 1;
       } else {
-        // If product doesn't exist, add new item
         cart.push({
           name: product.name,
           price: product.price,
@@ -126,14 +104,8 @@
           quantity: 1
         });
       }
-
-      // Save cart to localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
-      
-      // Show success message
       alert('Produk berhasil ditambahkan ke keranjang!');
-      
-      // Update cart count in navbar
       updateCartCount();
     }
 
