@@ -27,8 +27,21 @@
 
   <section id="keranjang" class="container">
     <h2 style="text-align:center;">Keranjang Anda</h2>
-    <div id="cart-items"></div>
-    <p id="total">Total: Rp0</p>
+    <div class="cart-table-wrapper">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Produk</th>
+            <th>Harga Satuan</th>
+            <th>Kuantitas</th>
+            <th>Total Harga</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+    </div>
+    <p id="total" style="text-align:right;font-weight:bold;margin-top:20px;">Total: Rp0</p>
   </section>
 
   <script>
@@ -50,22 +63,37 @@
       const totalElement = document.getElementById('total');
 
       if (cart.length === 0) {
-        cartItems.innerHTML = '<p>Keranjang Anda kosong</p>';
+        cartItems.innerHTML = `<tr><td colspan="5" style="text-align:center;">Keranjang Anda kosong</td></tr>`;
         totalElement.textContent = 'Total: Rp0';
         return;
       }
 
-      cartItems.innerHTML = cart.map((item, idx) => `
-        <div class="cart-item" style="display:flex;align-items:center;gap:16px;margin-bottom:18px;background:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
-          <img src="${item.image}" alt="${item.name}" class="cart-item-image" style="width:70px;height:70px;object-fit:cover;border-radius:6px;">
-          <div class="cart-item-details" style="flex:1;">
-            <h3 style="margin:0 0 4px 0;font-size:1.1rem;">${item.name}</h3>
-            <p style="margin:0 0 2px 0;">Harga: ${item.price}</p>
-            <p style="margin:0;">Jumlah: ${item.quantity}</p>
-          </div>
-          <button class="remove-item" data-idx="${idx}" style="background:#e74c3c;color:#fff;border:none;padding:7px 14px;border-radius:5px;cursor:pointer;">Hapus</button>
-        </div>
-      `).join('');
+      cartItems.innerHTML = cart.map((item, idx) => {
+        const price = parseInt(item.price.replace(/[^\d]/g, ''));
+        const total = price * item.quantity;
+        return `
+          <tr>
+            <td style="display:flex;align-items:center;gap:12px;">
+              <img src="${item.image}" alt="${item.name}" style="width:60px;height:60px;object-fit:cover;border-radius:6px;">
+              <div>
+                <div style="font-weight:600;">${item.name}</div>
+              </div>
+            </td>
+            <td>Rp${price.toLocaleString('id-ID')}</td>
+            <td>
+              <div style="display:flex;align-items:center;gap:4px;justify-content:center;">
+                <button class="qty-btn" data-idx="${idx}" data-action="dec" style="padding:2px 8px;">-</button>
+                <input type="number" min="0" value="${item.quantity}" class="qty-input" data-idx="${idx}" style="width:40px;text-align:center;" />
+                <button class="qty-btn" data-idx="${idx}" data-action="inc" style="padding:2px 8px;">+</button>
+              </div>
+            </td>
+            <td>Rp${total.toLocaleString('id-ID')}</td>
+            <td>
+              <button class="remove-item" data-idx="${idx}" style="background:none;color:#e74c3c;border:none;cursor:pointer;">Hapus</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
 
       const total = calculateTotal();
       totalElement.textContent = `Total: Rp${total.toLocaleString('id-ID')}`;
@@ -78,11 +106,38 @@
       displayCart();
     }
 
-    // Event listener untuk tombol hapus (delegasi event)
+    // Event listener untuk tombol hapus dan qty (delegasi event)
     document.getElementById('cart-items').addEventListener('click', function(e) {
       if (e.target.classList.contains('remove-item')) {
         const idx = parseInt(e.target.getAttribute('data-idx'));
         removeFromCartByIdx(idx);
+      }
+      if (e.target.classList.contains('qty-btn')) {
+        const idx = parseInt(e.target.getAttribute('data-idx'));
+        const action = e.target.getAttribute('data-action');
+        if (action === 'inc') {
+          cart[idx].quantity += 1;
+        } else if (action === 'dec') {
+          cart[idx].quantity -= 1;
+        }
+        // Jika quantity jadi 0 atau kurang, hapus dari cart
+        cart = cart.filter(item => item.quantity > 0);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
+      }
+    });
+
+    // Event listener untuk input manual quantity
+    document.getElementById('cart-items').addEventListener('input', function(e) {
+      if (e.target.classList.contains('qty-input')) {
+        const idx = parseInt(e.target.getAttribute('data-idx'));
+        let val = parseInt(e.target.value);
+        if (isNaN(val) || val < 0) val = 0;
+        cart[idx].quantity = val;
+        // Jika quantity jadi 0, hapus dari cart
+        cart = cart.filter(item => item.quantity > 0);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCart();
       }
     });
 
